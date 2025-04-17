@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array problems</title>
+</head>
+
+<body>
+
+  <script>
+    // 1. map(): The Transformer:Takes an array, transforms each element, and returns a new array with the same length.
+
+    // array.map((element, index, array) => {
+    //   // return the transformed element
+    // });
+
+
+    let nums = [1, 2, 3, 4, 5];
+    function double(x) {
+      return x * 2;
+    }
+
+    function triple(x) {
+      return x * 3;
+    }
+
+    let output = nums.map(double)
+    console.log(output);
+    console.log(nums.map(triple));
+
+    const out = nums.map((x) => x.toString(2)); console.log(out);
+
+    // 2. filter() : Goes through the array and filters out elements that don’t pass a test.
+
+    // array.filter((element, index, array) => {
+    // return condition; // only truthy values make the cut
+    // });
+
+    const nums1 = [1, 2, 3, 4, 5, 6];
+
+    //filter odd values
+    function isOdd(x) {
+      return x % 2;
+    }
+    console.log(nums1.filter(isOdd));
+
+    //filter even values
+    // function isEven(x){
+    // return x % 2 == 0;
+    // }
+    console.log(nums1.filter((x) => x % 2 == 0));
+
+    // no less than 2
+    const ouput1 = nums1.filter(num => num > 2)
+    console.log(ouput1);
+
+    // to count even numbers
+    arr4 = [2, 3, 4, 5, 6, 7, 8, 9, 12, 33]
+    function even() {
+      let count = [];
+      for (let i = 0; i < arr4.length; i++) {
+        if (arr4[i] % 2 == 0) {
+          count.push(arr4[i]) //count++ (for count occurences of numbers)
+        }
+      }
+      return count;
+    }
+    console.log(even());
+
+    //even number using filter
+    const output5 = arr4.filter(x => x % 2 === 0);
+    console.log(output5);
+
+
+
+    // 3. reduce():Goes through the array and reduces it to a single value using a callback.
+
+    // array.reduce((accumulator, currentValue, index, array) => {
+    // return updatedAccumulator;
+    // }, initialValue);
+
+    //to find sum of array
+    const arr = [5, 2, 3, 4, 1, 5, 6];
+    function findSum() {
+      let sum = 0;
+      for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+      }
+      return sum;
+    }
+    console.log(findSum()); // Output: 26
+
+    //sum of array using REDUCE()
+    const ouput2 = arr.reduce((acc, curr) => {
+      acc = acc + curr;
+      return acc
+    }, 0);
+    console.log(ouput2);
+
+
+
+    //to find maximum arr
+    const arr1 = [10, 4, 22, 8, 3, 15];
+    function findMax() {
+      let max = 0;
+      for (let i = 1; i < arr1.length; i++) {
+        if (arr1[i] > max) {
+          max = arr1[i];
+        }
+      }
+      return max;
+    }
+    console.log(findMax()); // Output: 22
+
+    //using reduce to find maximum
+    const output3 = arr1.reduce((max, curr) => {
+      if (curr > max) {
+        max = curr
+      }
+      return max;
+    }, 0);
+    console.log(output3);
+
+
+    //to find minimum array
+    function findMin() {
+      let min = arr1[0];
+      for (let i = 0; i < arr1.length; i++) {
+        if (arr1[i] < min) {
+          min = arr1[i];
+        }
+      }
+      return min;
+    }
+    console.log(findMin());
+
+    //minimum using REDUCE
+    const output4 = arr1.reduce((min, curr) => {
+      if (curr < min) {
+        min = curr;
+      }
+      return min;
+    }, Infinity);
+    console.log(output4);
+
+    //reverse a array
+    arr2 = [1, 2, 3, 4, 5, 6, 7, 8]
+    console.log(arr2.reverse());
+
+    const users = [
+      { firstname: "pavan", lastname: "raj", age: 25 },
+      { firstname: "donald", lastname: "trumph", age: 25 },
+      { firstname: "elon", lastname: "musk", age: 30 },
+    ];
+    console.log(users.map(x => `iam ${x.firstname.toUpperCase()} ${x.lastname} my age is ${x.age}`));
+
+
+    //no of names with same age    
+    console.log(users.reduce(function (acc, curr) {
+      if (acc[curr.age]) {
+        acc[curr.age]++;
+      } else {
+        acc[curr.age] = 1
+      }
+      return acc;
+    }, {}));
+
+    // Group them by age with names?
+
+    const groupedByAge = users.reduce((acc, curr) => {
+      const fullName = `${curr.firstname} ${curr.lastname}`;
+
+      if (acc[curr.age]) {
+        acc[curr.age].push(fullName);
+      } else {
+        acc[curr.age] = [fullName];
+      }
+
+      return acc;
+    }, {});
+
+    console.log(groupedByAge);
+
+    // other method
+    const groupedByAgee = users.reduce((acc, { firstname, lastname, age }) => ({
+      ...acc,
+      [age]: [...(acc[age] || []), `${firstname} ${lastname}`]
+    }), {});
+
+    console.log(groupedByAgee);
+
+    // using a filter and map
+    const display =
+      users.filter((x) => x.age < 30).map((x) => x.firstname);
+    console.log(display);
+
+
+
+
+  </script>
+</body>
+
+</html>

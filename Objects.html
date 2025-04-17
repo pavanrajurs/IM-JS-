@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Objects</title>
+</head>
+
+<body>
+
+  <script>
+    //creating object
+    const person = {
+      name: "John Doe",
+      age: 30,
+      city: "New York"
+    }
+
+    //accessing properties
+    //dot  notation
+    console.log(person.name)
+
+    //updating properties
+    person.name = "Mary Doe"
+
+    console.log(person.name);
+    console.log(person["name"]);
+    console.log(person);
+
+    //adding new property
+
+    person.gender = "male";
+    person.hobbies = ["reading", "painting"];
+    console.log(person);
+
+    //modifying properties
+    person.age = 300;
+    console.log(person);
+
+    //deleting properties
+    delete person.hobbies[1];
+    console.log(person);
+
+    //using new object 
+    const car = new Object();
+    car.brand = "toyoto";
+    car.model = "corllo";
+    console.log(car);
+
+    //nested properties
+
+    const student = {
+      name: "alice",
+      marks: {
+        math: 80,
+        science: 90,
+        english: 75
+      }
+    }
+    console.log(student);
+    console.log(student.marks);
+
+    //adding a method
+    const employee = {
+      name: "Mark",
+      getDetails: function () {
+        return `${this.name} is a software engineer`;
+      }
+    };
+
+    console.log(employee.getDetails());
+
+    //WHAT is JSON.stringify and JSON.parse
+    const user3 = {
+      name: "anuj",
+      age: 35,
+    }
+    const strObj = JSON.stringify(user3);
+    console.log(strObj);
+
+    console.log(JSON.parse(strObj));
+
+    //to show in storage
+    localStorage.setItem("test", strObj);
+    console.log(JSON.parse(localStorage.getItem("test")));
+
+    //example on json stringfy
+    const settings = {
+      username: "piyush",
+      level: 80,
+      health: 90,
+    }
+    const data = JSON.stringify(settings, ["username", "level"]);
+    console.log(data);
+
+    //using this keyword
+    const user = {
+      name: "Mark1",
+      greet: function () {
+        return `${this.name} is a software engineer`;
+      }
+    };
+
+    console.log(user.greet());
+
+    // EX how to add object to a existing object
+    let j = {
+      name1: "Anton",
+      age: 25,
+      ist: true,
+    }
+    for (key in j) {
+      console.log(j[key]);
+    }
+    let { name1, age, ist, country = "india" } = j
+    j.country ??= "india" // Adds "india" only if country is undefined
+    console.log(j.country);
+
+
+
+
+    //Ex1
+    let y = {
+      name: "Anton",
+      age: 25,
+      ist: true,
+    }
+    for (key in y) {
+      console.log(y[key]);
+    }
+
+    //Ex2
+    const obj = {
+      a: "one",
+      b: "two",
+      a: "three",
+    }
+    console.log(obj);
+
+    //Ex3
+    //create a function multiplyByTwo(obj) that multiplies all numeric property values nums by 2.
+    let nums = {
+      a: 100,
+      b: 200,
+
+    };
+
+    function multiplyByTwo(nums) {
+      for (let key in nums) {
+        if (typeof nums[key] == "number") {
+          nums[key] *= 2;
+        }
+      }
+    }
+
+    multiplyByTwo(nums);
+    console.log(nums);
+
+
+    //Ex3
+    const a = {};
+    const b = { key: "b" };
+    const c = { key: "c" };
+
+    a[b] = 123; //object object
+    a[c] = 456; //objject object{bcoz object cannot covert into key unless its a string}
+
+    console.log(a[b]);
+    //spred operator
+
+    const obj1 = { a: 1, b: 2 };
+    const obj2 = { c: 3, d: 4 };
+
+    const newObj = { ...obj1, ...obj2 };
+    console.log(newObj);
+    // spread example
+    const user4 = { name: "lydia", age: 34 }
+    const admin = { admin: true, ...user4 };
+
+    console.log(admin);
+
+    //object destructuring
+    console.log((10 || 10) ? "yes" : "no");
+
+
+    let name = {
+      firstname: "Pavan",
+      lastname: "Raj",
+      printFullName: function () {
+        console.log(`My name is ${this.firstname} ${this.lastname}`);
+
+      }
+    }
+
+    name.printFullName();
+
+    let name2 = {
+      firstname: "Sachin",
+      lastname: "Tendulkar",
+    }
+
+    //function borrowing
+    name.printFullName.call(name2);
+
+
+    const me = {
+      name3: " Dear You",
+      class: {
+        one: "blore",
+        two: "lore"
+
+      }
+    }
+    console.log(me.name3);
+
+    Object.freeze(me)
+    me.name4 ??= "raj";
+    console.log(me.name4);
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

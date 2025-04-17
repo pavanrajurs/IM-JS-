@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array</title>
+</head>
+
+<body>
+
+  <script>
+
+    //creating a array
+    let fruits1 = ["orange", "apple", "graphes"];
+
+    //accessing a array
+    console.log(fruits1[0]);
+    console.log(fruits1[2]);
+
+    //modifying a array
+    fruits1[1] = "berries";
+    console.log(fruits1);
+
+    //finding a length
+    console.log(fruits1.length);
+
+    //array methods
+    //1:adding elements
+    let fruits = ["apple", "banana", "orange"];
+
+    fruits.push("mango"); //add elements to end of array
+    fruits.unshift("orange"); //add elements to begining of array
+    console.log(fruits);
+    //2:removeing a elements
+    fruits.pop(); //removes the last element
+    fruits.shift(); //removes the first elements
+    console.log(fruits);
+
+    //finding elements
+    console.log(fruits.indexOf("apple"));
+    console.log(fruits.includes("apple"));
+
+    //iterating over elements
+    //1:using for loop
+    for (i = 0; i < fruits.length; i++) {
+      console.log(fruits[i]);
+    }
+
+    //2: using for of
+    for (let char of fruits) {
+      console.log(char);
+    }
+    for (let char of "hello") {
+      console.log(char);
+    }
+    for (i = 0; i < 5; i++) {
+      console.log(i);
+    }
+    //3: using forEach() = method used to iterate over the elements of an array and apply a specified function (callback) to each element
+
+    // array.forEach(callback)
+    //element,index, array are provided
+    //ex
+    let arr5 = [1, 2, 3, 4, 5];
+    arr5.forEach(display);
+
+    function display(element) {
+      console.log(element);
+
+    }
+
+    //ex
+    arr5.forEach(double)
+    function double(element, index, array) {
+      console.log(array[index] = element * 2);
+    }
+    arr5.forEach((value) => console.log(value));
+    arr5.forEach((value) => console.log(value ** 2));
+
+
+    arr5.forEach((value) => console.log(value*2))
+
+    //splice method: change the original array
+    person = ["per1", "per2", "per3", "per4", "per5", "per6"]
+    console.log(person[0]);
+    person.splice(1, 2, "per10", "per11");
+    person[5] = "pwr16";
+    console.log(person);
+
+    //ex1
+    //syntax : array.splice(start, deleteCount, item1, item2, ...);
+
+    let arr = [1, 2, 3, 4, 5];
+    arr.splice(1, 2); // Removes 2 elements starting from index 1
+    console.log(arr); // Output: [1, 4, 5]
+
+    //ex2
+    arr.splice(2, 1, 9); // Replaces 1 element at index 2 with 9
+    console.log(arr); // Output: [1, 4, 9]
+
+    //ex3
+    arr.splice(2, 0, 99, 100); // Inserts 99 and 100 at index 2 without removing anything
+    console.log(arr); // Output: [1,4,99,100,9]
+
+
+
+    //slice method: does not change original array
+    //syntax : array.slice(start, end);
+    arr2 = [1, 2, 3, 4, 5, 6]
+    console.log(arr2.slice(1, 4));   // Output: [2, 3, 4]
+    console.log(arr2.slice(0, 6)); //[1,2,3,4,5,6]
+    console.log(arr2); // Output: [1, 2, 3, 4, 5] (unchanged)
+
+    // array of objects
+
+    let cars = [
+      { make: "Toyota", year: 2019 },
+      { make: "Benz", year: 2020 },
+      { make: "Mustang", year: 2021 },
+    ];
+
+    cars.forEach(car => {
+      console.log(car.make + " " + car.year);
+    });
+
+    //multidimensionl array 
+    let matrix = [
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9]
+    ];
+    console.log(matrix[1][2]);
+
+    //array destructuring
+    const arr3 = [1, 2, 3, 4, 5, 6, 7, 8];
+    const [n, t, , o] = arr3;
+
+    console.log(n); // 1
+    console.log(t); // 2
+    console.log(o); // 3
+
+    //array destructuring using Rest operator
+    const numbers = [1, 2, 3, 4, 5];
+    const [first, second, ...rest] = numbers;
+
+    console.log(first); // 1
+    console.log(second); // 2
+    console.log(rest); // [3, 4, 5]
+
+    //Spread Operator : The spread operator is used to expand an array, object, or iterable into individual elements. Think of it as "spreading out" elements.
+    const nums = [1, 2, 3];
+    console.log(...nums); // 1 2 3
+
+    //combineing array
+    const arr8 = [1, 2, 3];
+    const arr9 = [4, 5, 6];
+
+    const combined = [...arr8, ...arr9];
+    console.log(combined); // [1, 2, 3, 4, 5, 6]
+
+    //ex1
+    const numbers3 = [10, 20, 30];
+
+    function sum(a, b, c) {
+      return a + b + c;
+    }
+
+    console.log(sum(...numbers3)); // 60
+
+    //Rest operator : The rest operator (...) is used to collect multiple values into a single array or object. It is the opposite of the spread operator, which expands elements.
+
+    function sum(...numbers) {
+      return numbers.reduce((total, num) => total + num, 0);
+    }
+
+    console.log(sum(1, 2, 3, 4, 5)); // 15
+
+    //rest in array destructuring
+    const [firs, secon, ...res] = [10, 20, 30, 40, 50];
+
+    console.log(firs); // 10
+    console.log(secon); // 20
+    console.log(res); // [30, 40, 50]
+
+
+    //rest in Object destructuring
+    const user = { name: "Alice", age: 25, city: "New York", country: "USA" };
+
+    const { name, ...details } = user;
+
+    console.log(name); // "Alice"
+    console.log(details); // { age: 25, city: "New York", country: "USA" }
+
+  </script>
+
+</body>
+
+</html>

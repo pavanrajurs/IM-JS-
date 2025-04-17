@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arrow Functions</title>
+</head>
+
+<body>
+
+
+  <script>
+    //Arrow functions in JavaScript are a cleaner and shorter way to write functions. They were introduced in ES6 and are often used for concise function expressions.
+
+    //syntax : 
+    const funcName = (param1, param2) => {
+      return something;
+    };
+
+    //If the function is one-liner, with a single return, you can ditch the {} and return.
+    const square = x => x * x;
+
+    // Step 3: Zero Parameters?
+    const sayHi = () => console.log("Hi there 👋");
+
+    // Step 4: One Parameter?
+    const double = n => n * 2;
+
+    //  Step 5: Multiple Parameters?
+    const multiply = (a, b) => a * b;
+    console.log(multiply(2, 3));
+
+    // Step 6: Multi-line Function? Now we bring back the {} and return keyword. If you open the block, you have to explicitly return.
+    const greet = name => {
+      const message = `Hello, ${name}!`;
+      return message;
+    };
+    console.log(greet("raj"));
+
+    // Step 7: THIS is Different Arrow functions don’t have their own this. They inherit this from the surrounding scope. This is great for callbacks and React, but it can mess you up if you’re using it in object methods or constructors.
+
+    const obj = {
+      name: "Raj",
+      greet: () => {
+        console.log(`Hi, I'm ${this.name}`); // Uh-oh, this.name is undefined
+      }
+    };
+
+    obj.greet();
+
+    const obj1 = {
+      name: "Raj",
+      greet: function () {
+        console.log(`Hi, I'm ${this.name}`); // Boom! "Hi, I'm Raj"
+      }
+    };
+
+    obj1.greet();
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Callback Functions</title>
+</head>
+
+<body>
+
+  <script>
+    // A callback is just a function you pass as an argument to another function, and it gets called later — either immediately or eventually (like after an async task).
+
+
+    // STEP1: Create a normal function that does something
+    function greet(name) {
+      console.log(`Hello, ${name}!`);
+    }
+
+    // STEP2: Create a function that takes a callback
+    function processUserInput(callback) {
+      const name = "Raj";
+      callback(name); // this is where the callback gets called
+    }
+
+    // STEP3:Pass the function as an argument (don’t call it)
+    processUserInput(greet);
+    // OUTPUT = Hello, Raj!
+
+    //  Bonus: Anonymous Callback Example
+    processUserInput(function (name) {
+      console.log(`Hey there, ${name}, this is an anonymous callback!`);
+    });
+
+    // Or the cooler, cleaner way (with an arrow function):
+    processUserInput((name) => {
+      console.log(`Sup ${name}, arrow function reporting in.`);
+    });
+
+    //ex1
+    function greet(name) {
+      console.log(`Hello, ${name}!`);
+    }
+
+    function pu(callback) {
+      let name = "pavan"
+      callback(name);
+
+    }
+    pu(greet);
+    // ex2
+    function mainFunction(callback) {
+      // ... do stuff
+      callback(); // or pass something to it
+    }
+
+    // Option 1: Named function
+    function myCallback() {
+      console.log("Callback was called!");
+    }
+    mainFunction(myCallback);
+
+    // function showThis() {
+    //   console.log(this);
+    // }
+
+    // showThis();
+    // examples
+    function hello(callback) {
+      console.log("hello");
+      callback();
+    }
+    function wait() {
+      console.log("wait");
+    }
+    function leave() {
+      console.log("leave");
+    }
+    function goodbye() {
+      console.log("goodbye");
+    }
+    hello(wait);
+
+    // ex
+    function sum(callback, x, y) {
+      let result = x + y;
+      callback(result);
+
+    }
+
+    function display(result) {
+      console.log(`the sum of 2 numbers is ${result}`);
+    }
+    sum(display, 4, 5);
+
+    // ex
+    function doSomething(callback) {
+      console.log("Doing something...");
+      callback();
+    }
+
+    doSomething(function () {
+      console.log("Callback executed!");
+    });
+    //ex
+
+    function welcome(name){
+      console.log(`how are you ${name}`);
+    }
+
+    function getName(callback){
+      const name = "Pavan Raj"
+      callback(name);
+    }
+getName(welcome);
+
+//String transformation using callback
+function transformString(str, callback) {
+  return callback(str);
+}
+
+console.log(transformString("hello", (s) => s.toUpperCase()));
+
+// Check number is even/odd via callback
+function checkNumber(num, callback) {
+  callback(num % 2 === 0);
+}
+checkNumber(5, (isEven) =>
+  console.log(isEven ? "Even" : "Odd")
+);
+
+// Simulate a form submission
+function submitForm(data, onSuccess) {
+  console.log("Form submitted:", data);
+  onSuccess();
+}
+
+submitForm({ user: "Raj" }, () => console.log("Thanks for submitting!"));
+
+
+// Callback to filter array
+function filterArray(arr, callback) {
+  return arr.filter(callback);
+}
+
+console.log(filterArray([1, 2, 3, 4], (x) => x > 2));
+
+  </script>
+</body>
+
+</html>

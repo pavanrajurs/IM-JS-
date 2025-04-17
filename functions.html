@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUNCTIONS</title>
+</head>
+
+<body>
+
+    <script>
+        //Functions are the heart of JavaScript! They allow us to write reusable code, making our programs efficient and organized  
+
+        // Step 1: Function Declaration (Traditional)
+        function greet() {
+            console.log("Hello, world!");
+        }
+
+        greet(); // Output: Hello, world!
+
+        //Step 2: Function with Parameters
+        function greet(name) {
+            console.log(`Hello, ${name}!`);
+        }
+
+        greet("Raj"); // Output: Hello, Raj!
+        greet("Sam"); // Output: Hello, Sam!
+
+
+
+        // Step 3: Function with Return Value
+        function add(a, b) {
+            return a + b;
+        }
+
+        let sum = add(5, 3);
+        console.log(sum); // Output: 8
+
+        //Step 4: Function Expression (Anonymous Function)
+        const multiply = function (a, b) {
+            return a * b;
+        };
+
+        console.log(multiply(4, 5)); // Output: 20
+
+        // Step 5: Arrow Functions (ES6)
+        const square = (x) => x * x;
+        console.log(square(6)); // Output: 36
+
+        //Step 6: Default Parameters
+        function greet(name = "Guest") {
+            console.log(`Hello, ${name}!`);
+        }
+
+        greet(); // Output: Hello, Guest!
+        greet("Alex"); // Output: Hello, Alex!
+
+        // Step 7: Function with Multiple Parameters
+        function multiply1(a, b, c) {
+            return a * b * c;
+        }
+
+        console.log(multiply1(2, 3, 4)); // Output: 24
+
+
+        //Step 8: Rest Parameters (...)
+        function sumAll(...numbers) {
+            return numbers.reduce((acc, num) => acc + num, 0);
+        }
+
+        console.log(sumAll(1, 2, 3, 4, 5)); // Output: 15
+
+
+        //Step 9: Callback Functions
+        function greet1(name, callback) {
+            console.log(`Hello, ${name}!`);
+            callback();
+        }
+
+        function goodbye() {
+            console.log("Goodbye!");
+        }
+
+        greet1("Raj", goodbye);
+        // Output:
+        // Hello, Raj!
+        // Goodbye!
+
+        //Step 10: Immediately Invoked Function Expressions (IIFE)
+        (function () {
+            console.log("I am executed immediately!");
+        })();
+
+        //Step 11: Functions in Objects (Methods)
+        const person = {
+            name: "Raj",
+            greet: function () {
+                console.log(`Hello, my name is ${this.name}`);
+            }
+        };
+
+        person.greet(); // Output: Hello, my name is Raj
+
+        // Step 12: Recursive Functions
+        function countdown(n) {
+            if (n <= 0) {
+                console.log("Done!");
+                return;
+            }
+            console.log(n);
+            countdown(n - 1);
+        }
+
+        countdown(5);
+        // Output: 5, 4, 3, 2, 1, Done!
+
+    </script>
+</body>
+
+</html>
