@@ -38,6 +38,16 @@
       console.log(`Sup ${name}, arrow function reporting in.`);
     });
 
+    // function sum(a, b) {
+    //   console.log(a + b);
+
+    // }
+    // function calculator(a, b, sumCallback) {
+    //   sumCallback(a, b);
+
+    // }
+    // calculator(12, 34, sum);
+
     //ex1
     function greet(name) {
       console.log(`Hello, ${name}!`);
@@ -105,46 +115,85 @@
     });
     //ex
 
-    function welcome(name){
+    function welcome(name) {
       console.log(`how are you ${name}`);
     }
 
-    function getName(callback){
+    function getName(callback) {
       const name = "Pavan Raj"
       callback(name);
     }
-getName(welcome);
+    getName(welcome);
 
-//String transformation using callback
-function transformString(str, callback) {
-  return callback(str);
-}
+    //String transformation using callback
+    function transformString(str, callback) {
+      return callback(str);
+    }
 
-console.log(transformString("hello", (s) => s.toUpperCase()));
+    console.log(transformString("hello", (s) => s.toUpperCase()));
 
-// Check number is even/odd via callback
-function checkNumber(num, callback) {
-  callback(num % 2 === 0);
-}
-checkNumber(5, (isEven) =>
-  console.log(isEven ? "Even" : "Odd")
-);
-
-// Simulate a form submission
-function submitForm(data, onSuccess) {
-  console.log("Form submitted:", data);
-  onSuccess();
-}
-
-submitForm({ user: "Raj" }, () => console.log("Thanks for submitting!"));
+    // Check number is even/odd via callback
+    function checkNumber(num, callback) {
+      callback(num % 2 === 0);
+    }
+    checkNumber(5, (isEven) =>
+      console.log(isEven ? "Even" : "Odd")
+    );
 
 
-// Callback to filter array
-function filterArray(arr, callback) {
-  return arr.filter(callback);
-}
+    // Callback to filter array
+    function filterArray(arr, callback) {
+      return arr.filter(callback);
+    }
 
-console.log(filterArray([1, 2, 3, 4], (x) => x > 2));
+    console.log(filterArray([1, 2, 3, 4], (x) => x > 2));
+
+
+    function sum(a, b) {
+      return a + b;
+    }
+    function sub(a, b) {
+      return a - b;
+    }
+
+    function div(a, b) {
+      return a / b;
+    }
+
+    function calculotor(a, b, callback) {
+      const result = callback(a, b);
+      console.log("Result =", result)
+    }
+
+    calculotor(2, 3, sum);
+    calculotor(2, 3, sub);
+    calculotor(10, 5, div);
+
+    // Simulate a form submission
+    function submitForm(data, onSuccess) {
+      console.log("Form submitted:", data);
+      onSuccess();
+    }
+
+    submitForm({ user: "Raj" }, () => console.log("Thanks for submitting!"));
+
+    function submitForm(data, onSuccess, onError) {
+      console.log("Submitting form...");
+      setTimeout(() => {
+        if (data.user) {
+          console.log("Form submitted:", data);
+          onSuccess();
+        } else {
+          onError("User data missing!");
+        }
+      }, 1000);
+    }
+
+    submitForm(
+      { user: "Raj" },
+      () => console.log("Thanks for submitting!"),
+      (err) => console.error("Submission failed:", err)
+    );
 
   </script>
 </body>
