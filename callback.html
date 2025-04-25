@@ -169,7 +169,7 @@
     calculotor(2, 3, sub);
     calculotor(10, 5, div);
 
-    // Simulate a form submission
+    // Simulate a form submission using settimeout
     function submitForm(data, onSuccess) {
       console.log("Form submitted:", data);
       onSuccess();
@@ -194,6 +194,107 @@
       () => console.log("Thanks for submitting!"),
       (err) => console.error("Submission failed:", err)
     );
+
+    //ex
+    function greet(name, callback) {
+      console.log("Processing...");
+
+      setTimeout(() => {
+        console.log("Hello, " + name);
+        if (callback) {
+          callback();
+        };
+      }, 1500);
+    }
+
+    greet("Raj", () => {
+      console.log("Greeting complete ✅");
+    });
+
+    // //ex
+    // function greet(name, callback) {
+    //   console.log("Processing...");
+
+    //   setTimeout(() => {
+    //     console.log("Hello, " + name);
+    //     if (typeof callback === "function") {
+    //       callback();
+    //     } else {
+    //       console.error("❌ Callback is not a function!");
+    //     }
+    //   }, 200);
+    // }
+
+    //get one data after the other
+    function getData(dataId, getNextData) {
+      setTimeout(() => {
+        console.log("data", dataId);
+        if (getNextData) {
+          getNextData();
+        }
+      }, 2000);
+    }
+    //callback hell => nested callbacks stacked below one another ,difficult to understand and manage
+    getData(1, () => {
+      console.log("getting data 2.....");
+      getData(2, () => {
+        console.log("getting data 3.....");
+        getData(3, () => {
+          console.log("getting data 4.....");
+          getData(4);
+        })
+      })
+    })
+
+    //promises =>A Promise is an object that represents the eventual result (or failure) of an asynchronous operation.
+
+    // it has three states(example of promise1)
+    // Promise {<rejected>: 'some error occured'}
+    // [[Prototype]] Promise
+    // [[PromiseState]] "rejected"
+    // [[PromiseResult]] "some error occured"
+
+    //example
+    // let promise = new Promise((resolve, reject) => {
+    // //   console.log("i am a promise");
+    // //   resolve(123)
+    // // })
+
+    let promise1 = new Promise((resolve, reject) => {
+      console.log("i am a promise");
+      reject("some error occured")
+    })
+
+
+    function c1() {
+      console.log("hello  you");
+
+    }
+    function get(d, c) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log(d);
+
+          if (c) {
+            c();
+          }
+
+          resolve("resolved");
+        }, 6000);
+      });
+    }
+    get(1, c1)
+
+    const getPromise = () => {
+      new Promise((resolve, reject) => {
+        console.log("i am a promise");
+        resolve("sucess");
+      })
+    }
+    let promise = getPromise();
+    promise.then(() => {
+      console.log("promise fulfilled");
+    });
 
   </script>
 </body>
