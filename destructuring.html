@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // destructuring = extract values from arrays and objects,then assign them to vareiables in convenient way 
+    // [] = to perform array destructuring
+    // {} = to perform object destructuring
+
+
+
+    //  ---------- EXAMPLE 1 ----------
+    // SWAP THE VALUE OF TWO VARIABLES
+
+    let a = 1;
+    let b = 2;
+
+    [a, b] = [b, a]
+
+    console.log(b);
+    console.log(a);
+
+    // SWAP TWO ELEMENTS IN AN ARRAY
+    const colors = ["red", "green", "blue", "purple", "gold"];
+
+    [colors[0], colors[4]] = [colors[4], colors[0]]
+    console.log(colors[0]);
+    console.log(colors[4]);
+    console.log(colors);
+
+    // ASSIGN ARRAY ELEMENTS TO VARIABLES
+    const items = ["bike", "car", "cycle", "bus"]
+
+    const [firstItem, secondItem, ...extraitems] = items
+    console.log(firstItem);
+    console.log(secondItem);
+    console.log(extraitems);
+
+    console.log(...colors);
+
+
+    // EXTRACT VALUES FROM OBJECTS
+    const person1 = {
+      firstName: "spongebob",
+      lastName: "squarepants",
+      age: 30,
+      job: "businessman",
+    }
+
+
+    const person2 = {
+      firstName: "ravi",
+      lastName: "gowda",
+      age: 30,
+      job: "driver",
+      hello: function () {
+        console.log(`hello i am ${this.firstName} ${this.lastName}`);
+      }
+    }
+    person2.hello();
+
+
+
+  </script>
+</body>
+
+</html>
