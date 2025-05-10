@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Destructuring</title>
 </head>
 
 <body>
@@ -58,14 +58,39 @@
       firstName: "ravi",
       lastName: "gowda",
       age: 30,
-      job: "driver",
-      hello: function () {
-        console.log(`hello i am ${this.firstName} ${this.lastName}`);
-      }
     }
-    person2.hello();
 
 
+    const { firstName, lastName, age, job, payroleType = "fresher" } = person1
+    console.log(firstName);
+    console.log(lastName);
+    console.log(age);
+    console.log(job);
+    console.log(payroleType);
+
+    // DESTRUCTURE IN FUNCTION PARAMETERS
+
+    function displayperson({ firstName, lastName, age, job = "shooter" }) {
+      console.log(`name : ${firstName} ${lastName}`);
+      console.log(`age : ${age}`);
+      console.log(`job : ${job}`);
+    }
+
+
+    const person3 = {
+      firstName: "sponge",
+      lastName: "bob",
+      age: 30,
+      job: "businessman",
+    }
+
+    const person4 = {
+      firstName: "avi",
+      lastName: "gowda",
+      age: 30,
+    }
+
+    displayperson(person4);
 
   </script>
 </body>
