@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLASSES</title>
+</head>
+
+<body>
+  <script>
+    // PROTOTYPES = EVERY JS OBJECT HAS A PROTOTYPE,ALL JS OBJECTS INHERIT THEIR PROPERTIES AND METHODS FROM THEIR PROTOTYPE
+
+    function person(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+
+    person.prototype.greet = function () {
+      console.log(`hello, My name is ${this.name}`);
+
+    }
+    let jhon = new person("pavan", 22);
+    jhon.greet()
+
+// CLASSES
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>
