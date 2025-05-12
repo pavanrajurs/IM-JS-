@@ -14,7 +14,7 @@
     // get one data after the other
     function getData(dataId, getNextData) {
       setTimeout(() => {
-    console.log("data", dataId);
+        console.log("data", dataId);
         if (getNextData) {
           getNextData();
         }
@@ -35,51 +35,96 @@
 
     //promises =>A Promise is an object that represents the eventual result (or failure) of an asynchronous operation.
 
-    // it has three states(example of promise1)
-    // Promise {<rejected>: 'some error occured'}
-    // [[Prototype]] Promise
-    // [[PromiseState]] "rejected"
-    // [[PromiseResult]] "some error occured"
+    /*   "I promise to return a value"
+      PENDING -> RESOLVED OR REJECTED
+  
+      it has three states(example of promise1)
+      Promise {<rejected>: 'some error occured'}
+      [[Prototype]] Promise
+      [[PromiseState]] "rejected"
+      [[PromiseResult]] "some error occured" */
 
-    //example
-    // let promise = new Promise((resolve, reject) => {
-    // //   console.log("i am a promise");
-    // //   resolve(123)
-    // // })
-
-    let promise1 = new Promise((resolve, reject) => {
-      console.log("i am a promise");
-      reject("some error occured")
-    })
+    /* example
+    let promise = new Promise((resolve, reject) => { asyschronous code })
+ */
 
 
-    function c1() {
-      console.log("hello  you");
+    /* DO THE CHORES IN ORDER
+    1. WALK THE DOG
+    2. CLEAN THE KITCHEN
+    3. TAKE OUT THE TRASH */
 
+
+    // TRADITIONAL WAY
+    /* function walkDog(callback) {
+
+      setTimeout(() => {
+        console.log("you walk the dog");
+        callback();
+
+      }, 1000)
     }
-    function get(d, c) {
+
+    function cleanKitchen(callback) {
+
+      setTimeout(() => {
+        console.log("you clean the kitchen");
+        callback()
+
+      }, 1500)
+    }
+
+    function takeTrash(callback) {
+
+      setTimeout(() => {
+        console.log("you take out the trash");
+        callback()
+
+
+      }, 500)
+    }
+
+    walkDog(() => {
+      cleanKitchen(() => {
+        takeTrash(() => {
+          console.log("you have finished all the chores");
+
+
+        })
+      })
+    }) */
+
+    function walkDog() {
+
       return new Promise((resolve, reject) => {
         setTimeout(() => {
-          console.log(d);
-          if (c) {
-            c();
-          }
-          resolve("resolved");
-        }, 6000);
+          resolve("you walk the dog");
+        }, 1000)
       });
     }
-    get(1, c1)
 
-    const getPromise = () => {
+    function cleanKitchen() {
       return new Promise((resolve, reject) => {
-        console.log("i am a promise");
-        resolve("sucess");
+        setTimeout(() => {
+          resolve("you clean the kitchen");
+        }, 1500)
       })
     }
-    let promise = getPromise();
-    promise.then(() => {
-      console.log("promise fulfilled");
-    });
+
+    function takeTrash() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("you take out the trash");
+        }, 500)
+      })
+    }
+
+    walkDog().then(value => { console.log(value); return cleanKitchen() })
+      .then(value => { console.log(value); return takeTrash() })
+      .then(value => { console.log(value); console.log("you finished all the chores"); })
+
+
+
 
 
 
