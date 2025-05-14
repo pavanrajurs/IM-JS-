@@ -23,12 +23,10 @@
     console.log(typeof val1);
     console.log(val.length);
 
-
     //Boolean to string
 
     let val2 = String(true)
     console.log(val2.length);
-
     console.log(typeof val2);
 
     // Date to string
@@ -42,10 +40,40 @@
     console.log(typeof val4);
 
     // toString()
-    
+
     val5 = (10).toString();
     val = (true).toString();
     console.log(typeof val5);
+
+
+    // String to number
+    val6 = Number('5');
+    console.log(val6);
+    console.log(val6.toFixed(2));
+    console.log(typeof val6);
+
+    // Boolean to number
+    val7 = Number(true);
+    val7 = Number(false);
+    val8 = Number(null);
+    console.log(typeof val8);
+
+
+    // parseInt()
+    val9 = parseInt("10")
+    console.log(typeof val9);
+    console.log(val9);
+
+
+
+    //  => type coercion
+    const v1 = '5';
+    const v2 = 6;
+    const sum = v1 + v2;
+    console.log(sum);
+    console.log(typeof sum);
+  
+    console.log(s1);
 
   </script>
 </body>
