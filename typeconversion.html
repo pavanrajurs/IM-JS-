@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>TYPE CONVERSION</title>
 </head>
 
 <body>
@@ -12,6 +12,40 @@
 
   <script>
 
+    // Number to string
+
+    let val = String(452);
+    let val1 = String(4 + 4);
+    console.log(val.length);
+    console.log(val);
+    console.log(typeof val);
+    console.log(val1);
+    console.log(typeof val1);
+    console.log(val.length);
+
+
+    //Boolean to string
+
+    let val2 = String(true)
+    console.log(val2.length);
+
+    console.log(typeof val2);
+
+    // Date to string
+
+    val3 = String(new Date());
+    console.log(typeof val3);
+
+    // Array to string
+
+    val4 = String([1, 2, 3, 4, 5, 6])
+    console.log(typeof val4);
+
+    // toString()
+    
+    val5 = (10).toString();
+    val = (true).toString();
+    console.log(typeof val5);
 
   </script>
 </body>
