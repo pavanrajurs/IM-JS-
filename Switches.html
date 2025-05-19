@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Switches</title>
+</head>
+
+<body>
+  <script>
+
+    const color = "t";
+
+    switch (color) {
+      case 'red':
+        console.log("color is red");
+        break;
+      case 'blue':
+        console.log("color is yellow");
+        break;
+      default:
+        console.log("neither color");
+        break;
+    }
+
+    const dayofweek = new Date().getDay();
+
+    switch (dayofweek) {
+      case 0:
+        console.log('Sunday');
+        break;
+      case 6:
+        console.log('saturday');
+        break;
+      default:
+        console.log("not in the list");
+
+    }
+
+    function start() {
+      for (var i = 0; i < 5; i++) {
+        console.log(i);
+      }
+    }
+    start()
+  </script>
+</body>
+
+</html>
