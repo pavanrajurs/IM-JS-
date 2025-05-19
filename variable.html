@@ -1,4 +1,3 @@
-gi
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,27 +10,48 @@ gi
 <body>
   <script>
 
-    //variable
-    var x = 7;
-    function getName1() {
-      console.log("namaste js")
+    // variables  is like a container to store value
+
+    ex:
+    let mood = "happy"; // Now mood holds the string "happy".
+
+    /*
+    VAR => GLOBAL SCOPED
+       var – Old school (ES5)
+       Function - scoped
+       Gets hoisted(more on this later)
+       Can be re - declared */
+
+    var name = "Raj";
+    var name = "Boss"; // No error!
+
+
+    /* 
+    let – Modern default
+      Block-scoped (like inside {})
+      Not hoisted the same way
+      Can be reassigned, but not re-declared in the same scope
+     */
+
+    let age = 20;
+    age = 21; // ✅
+    // let age = 22; // ❌ SyntaxError
+
+
+    /*
+    🔒 const – Write-once
+      Also block-scoped
+      Must be initialized
+      Can’t be reassigned */
+
+    const pi = 3.14;
+    // pi = 3.14159; // ❌ TypeError
+
+
+    function testVar() {
+      var inside = "I'm stuck in here!";
     }
-    console.log(x);
-    getName1();
-    //global variables as arrow function
-
-
-
-    var x = 7;
-    var getName = () => {
-      console.log("namaste js")
-    }
-    console.log(x);
-    console.log("hello");
-    console.log("iam ");
-    console.log("pavan");
-    
-    
+    console.log(inside); // ❌ ReferenceError
 
   </script>
 
