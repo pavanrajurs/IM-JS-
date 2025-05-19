@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> LOOPS</title>
+</head>
+
+<body>
+
+  <script>
+    // 1:FOR LOOP
+    for (let i = 0; i < 10; i++) {
+      console.log(`hi ${i}`);
+    }
+
+    //2: for in arrays
+    const m = ["pavan", "mani", "rakesh", "gaurav"]
+
+    for (let index = 0; index < m.length; index++) {
+      console.log(m[index])
+    }
+
+    //3: using for of
+    for (const i of m) {
+      console.log(i);
+    }
+
+    // to show no characters
+    for (let char of "hello") {
+      console.log(char);
+    }
+
+    for (let i of "king") {
+      console.log(i);
+    }
+
+    // WHILE LOOP
+    i = 0;
+    while (i < 10) {
+      console.log(i);
+      i++
+    }
+
+
+    // DO-WHILE LOOP
+    let l = 10;
+    do {
+      l++;
+      console.log(l);
+    } while (l < 10);
+
+    //FOR IN loop
+    const person = { name: "mani", age: 25 }
+
+    for (x in person) {
+      console.log(x);
+    }
+
+    for (x in person) {
+      console.log(`i'am ${person.name} and ${person.age} years of age`);
+    }
+
+
+    let username;
+
+    do {
+      username = window.prompt("enter your name");
+    } while (username == " ");
+
+    console.log("hello",username);
+    
+  </script>
+</body>
+
+</html>
