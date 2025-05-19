@@ -198,6 +198,28 @@
     console.log(name); // "Alice"
     console.log(details); // { age: 25, city: "New York", country: "USA" };
 
+    // concat a array
+    m1=[1,2,99,3,4,5,6,8,9]
+    m2=[2,78,4,5,6,7,8,9]
+
+    val = m1.concat(m2)
+    console.log(val);
+        val = m1.reverse()
+    console.log(val);
+
+    // sorting for ascending order
+    val1 = m2.sort(function(x,y){
+      return x-y
+    })
+    console.log(val1);
+    
+    // sorting for descending order
+      val2 = m2.sort(function(x,y){
+      return y-x
+    })
+    console.log(val2);
+
+    
   </script>
 
 </body>
