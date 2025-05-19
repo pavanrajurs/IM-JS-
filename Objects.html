@@ -218,10 +218,48 @@
     me.name4 ??= "raj";
     console.log(me.name4);
 
+    // Array of objects
+
+    const k = [
+      {
+        name: "pavan",
+        age: 25
+      },
+      {
+        name: "raj",
+        age: 25
+      }
+    ]
+    console.log(k);
+    console.log(k[0]);
+    console.log(k[0].age);
 
 
+    // how to acess both the names
+    for (let i = 0; i < k.length; i++) {
+      console.log(k[i].name);
+    }
 
 
+    var r = 10;
+    console.log(r);
+
+
+    let m;
+    console.log(m);
+    let a1 = [1, 2, 3, 4]
+    console.log(typeof a1);
+
+    let b1 = {
+      b: "pvan",
+      l: "hhhh"
+    }
+    console.log(typeof b1);
+    console.log(new Date);
+
+    // TERNARY OPERATOR
+    let id = 100;
+    console.log(id == 100 ? "yes,it is correct" : "no,it is not correct");
 
   </script>
 </body>
