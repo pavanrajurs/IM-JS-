@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Array & Object Sorting in JavaScript</title>
+</head>
+
+<body>
+  <script>
+    // ==============================
+    // SORTING PRIMITIVE ARRAY (NUMBERS)
+    // ==============================
+
+    const arr = [1, 10, 2, 9, 3, 8, 4, 7, 5, 6];
+    console.log("Original Array:", arr);
+
+    // Sort in Ascending Order (Small to Big)
+    arr.sort((a, b) => a - b);
+    console.log("Ascending Order:", arr); // [1,2,3,4,5,6,7,8,9,10]
+
+    // Sort in Descending Order (Big to Small)
+    arr.sort((a, b) => b - a);
+    console.log("Descending Order:", arr); // [10,9,8,7,6,5,4,3,2,1]
+
+    // ==============================
+    // SORTING ARRAY OF OBJECTS
+    // ==============================
+
+    const people = [
+      { name: "Pavan", age: 26, gpa: 9.0 },
+      { name: "nikhil", age: 24, gpa: 8.0 },
+      { name: "Bharth", age: 25, gpa: 9.1 },
+      { name: "Mohan", age: 27, gpa: 6.0 },
+      { name: "Aarav", age: 22, gpa: 8.5 },
+      { name: "Zoë", age: 23, gpa: 8.8 },
+    ];
+
+    console.log("\n=== Original People Array ===");
+    console.table(people);
+
+    // 1. Sort by AGE (Ascending)
+    const byAgeAsc = [...people].sort((a, b) => a.age - b.age);
+    console.log("\nSorted by Age (Ascending):");
+    console.table(byAgeAsc);
+
+    // 2. Sort by AGE (Descending)
+    const byAgeDesc = [...people].sort((a, b) => b.age - a.age);
+    console.log("\nSorted by Age (Descending):");
+    console.table(byAgeDesc);
+
+    // 3. Sort by NAME (A-Z, case-insensitive)
+    const byNameAsc = [...people].sort((a, b) =>
+      a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
+    );
+    console.log("\nSorted by Name (A-Z):");
+    console.table(byNameAsc);
+
+    // 4. Sort by NAME (Z-A, case-insensitive)
+    const byNameDesc = [...people].sort((a, b) =>
+      b.name.localeCompare(a.name, undefined, { sensitivity: "base" })
+    );
+    console.log("\nSorted by Name (Z-A):");
+    console.table(byNameDesc);
+
+    // 5. Sort by GPA (High to Low)
+    const byGpaDesc = [...people].sort((a, b) => b.gpa - a.gpa);
+    console.log("\nSorted by GPA (High to Low):");
+    console.table(byGpaDesc);
+
+    // 6. Sort by GPA (Low to High)
+    const byGpaAsc = [...people].sort((a, b) => a.gpa - b.gpa);
+    console.log("\nSorted by GPA (Low to High):");
+    console.table(byGpaAsc);
+
+    // 7. BONUS: Sort by GPA, then by NAME (if GPA is equal)
+    const byGpaThenName = [...people].sort((a, b) => {
+      if (b.gpa === a.gpa) {
+        return a.name.localeCompare(b.name, undefined, { sensitivity: "base" });
+      }
+      return b.gpa - a.gpa;
+    });
+    console.log("\nSorted by GPA (desc), then Name (A-Z):");
+    console.table(byGpaThenName);
+
+  </script>
+</body>
+
+</html>
