@@ -10,67 +10,142 @@
 <body>
 
   <script>
-    // 1:FOR LOOP
-    for (let i = 0; i < 10; i++) {
-      console.log(`hi ${i}`);
+    // ===================================================
+    // 🔁 JAVASCRIPT LOOPS - CLEAN & BEGINNER FRIENDLY
+    // ===================================================
+
+    // ------------------------------------------
+    // 1️⃣ FOR LOOP – Classic counter loop
+    // ------------------------------------------
+
+    for (let i = 0; i < 5; i++) {
+      console.log(`👋 Hi, this is loop #${i}`);
     }
 
-    //2: for in arrays
-    const m = ["pavan", "mani", "rakesh", "gaurav"]
-
-    for (let index = 0; index < m.length; index++) {
-      console.log(m[index])
+    // Real-world example:
+    for (let star = 1; star <= 3; star++) {
+      console.log("⭐".repeat(star)); // ⭐, ⭐⭐, ⭐⭐⭐
     }
 
-    //3: using for of
-    for (const i of m) {
-      console.log(i);
+    // ------------------------------------------
+    // 2️⃣ FOR LOOP ON ARRAY (Classic index style)
+    // ------------------------------------------
+
+    const friends = ["Pavan", "Mani", "Rakesh", "Gaurav"];
+
+    for (let i = 0; i < friends.length; i++) {
+      console.log(`Friend ${i + 1}: ${friends[i]}`);
     }
 
-    // to show no characters
-    for (let char of "hello") {
-      console.log(char);
+    // ------------------------------------------
+    // 3️⃣ FOR...OF LOOP – Cleaner array iteration
+    // ------------------------------------------
+
+    for (const name of friends) {
+      console.log(`👤 Name: ${name}`);
     }
 
-    for (let i of "king") {
-      console.log(i);
+    // Works on strings too!
+    for (let char of "Hello") {
+      console.log(`🔤 Letter: ${char}`);
     }
 
-    // WHILE LOOP
-    i = 0;
-    while (i < 10) {
-      console.log(i);
-      i++
+    for (let letter of "King") {
+      console.log(`👑 Char: ${letter}`);
     }
 
+    // ------------------------------------------
+    // 4️⃣ WHILE LOOP – Repeat as long as condition is true
+    // ------------------------------------------
 
-    // DO-WHILE LOOP
-    let l = 10;
+    let counter = 0;
+
+    while (counter < 5) {
+      console.log(`Counter is at: ${counter}`);
+      counter++;
+    }
+
+    // Real-world-ish: Retry login (simplified)
+    let loginAttempts = 3;
+
+    while (loginAttempts > 0) {
+      console.log(`⚠️ Attempts left: ${loginAttempts}`);
+      loginAttempts--;
+    }
+
+    // ------------------------------------------
+    // 5️⃣ DO...WHILE LOOP – Runs at least once
+    // ------------------------------------------
+
+    let points = 10;
+
     do {
-      l++;
-      console.log(l);
-    } while (l < 10);
+      console.log(`🏁 Points: ${points}`);
+      points++;
+    } while (points < 10); // Only runs once here
 
-    //FOR IN loop
-    const person = { name: "mani", age: 25 }
-
-    for (x in person) {
-      console.log(x);
-    }
-
-    for (x in person) {
-      console.log(`i'am ${person.name} and ${person.age} years of age`);
-    }
-
-
+    // Real-world input check (in browser!)
+    /*
     let username;
-
-    do {
-      username = window.prompt("enter your name");
-    } while (username == " ");
-
-    console.log("hello",username);
     
+    do {
+      username = window.prompt("Enter your name:");
+    } while (username.trim() === "");
+    
+    console.log("✅ Hello", username);
+    */
+
+    // ------------------------------------------
+    // 6️⃣ FOR...IN LOOP – Looping through object keys
+    // ------------------------------------------
+
+    const person = {
+      name: "Mani",
+      age: 25,
+      city: "Hyderabad"
+    };
+
+    // Loop through keys
+    for (let key in person) {
+      console.log(`🗝️ Key: ${key}, Value: ${person[key]}`);
+    }
+
+    // Friendly sentence:
+    for (let key in person) {
+      console.log(`My ${key} is ${person[key]}`);
+    }
+
+    // ------------------------------------------
+    // BONUS: Looping Nested Arrays
+    // ------------------------------------------
+
+    const teams = [
+      ["Alice", "Bob"],
+      ["Pavan", "Gaurav"],
+      ["Mani", "Rakesh"]
+    ];
+
+    for (let i = 0; i < teams.length; i++) {
+      console.log(`Team ${i + 1}:`);
+      for (let member of teams[i]) {
+        console.log(`   - ${member}`);
+      }
+    }
+
+    // ------------------------------------------
+    // 🔁 SUMMARY OF LOOP TYPES:
+    // ------------------------------------------
+    /*
+    1. for          → best when you know how many times
+    2. for...of     → best for arrays, strings
+    3. for...in     → best for objects (keys)
+    4. while        → best when unsure how many times
+    5. do...while   → must run at least once
+    */
+
+    // Boom. You just mastered all JS loops. 🔁🔥
+
+
   </script>
 </body>
 
