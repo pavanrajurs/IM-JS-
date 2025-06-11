@@ -20,6 +20,7 @@
     //accessing properties
     //dot  notation
     console.log(person.name)
+    console.log(person['name'])
 
     //updating properties
     person.name = "Mary Doe"
@@ -260,6 +261,21 @@
     // TERNARY OPERATOR
     let id = 100;
     console.log(id == 100 ? "yes,it is correct" : "no,it is not correct");
+
+
+    // object.freeze() => cannot change the data inside the object
+
+    const d = {
+      name: "pavan",
+      age: 25,
+    }
+    Object.freeze(d)
+    d.age = 27;
+    console.log(d.age);
+
+
+
+
 
   </script>
 </body>
