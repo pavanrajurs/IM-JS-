@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    // ✅ Numbers and Math Objects in JavaScript Cheatsheet
+
+    // ✅ Basic Arithmetic
+    const n1 = 109;
+    const n2 = 50;
+
+    let v;
+    v = n1 + n2;      // Addition: 109 + 50 = 159
+    v = n1 - n2;      // Subtraction: 109 - 50 = 59
+    v = n1 * n2;      // Multiplication: 109 * 50 = 5450
+    v = n1 / n2;      // Division: 109 / 50 = 2.18
+    v = n1 % n2;      // Modulus (remainder): 109 % 50 = 9
+
+    // ✅ Math Object Functions
+    console.log("Math.PI:", Math.PI);                         // 3.141592653589793
+    console.log("Round:", Math.round(2.4));                   // 2
+    console.log("Ceil:", Math.ceil(2.4));                     // 3
+    console.log("Floor:", Math.floor(2.4));                   // 2
+    console.log("Square Root:", Math.sqrt(33));              // ~5.744
+    console.log("Absolute:", Math.abs(-3));                   // 3
+    console.log("Power:", Math.pow(2, 3));                    // 8 (2^3)
+    console.log("Min:", Math.min(2, 3, 44, 22, 3, 5, 5, 5));  // 2
+    console.log("Max:", Math.max(2, 3, 44, 22, 3, 5, 5, 5));  // 44
+    console.log("Random (0-1):", Math.random());              // e.g., 0.734...
+    console.log("Random (1-20):", Math.floor(Math.random() * 20 + 1)); // 1 to 20
+
+    // ✅ Type Conversion
+    let val;
+
+    // String to Number
+    val = Number("123");            // 123 (number)
+    val = parseInt("100");          // 100 (integer)
+    val = parseFloat("99.99");      // 99.99 (float)
+
+    // Number to String
+    val = String(123);              // "123"
+    val = (456).toString();         // "456"
+
+    // Boolean to Number
+    val = Number(true);             // 1
+    val = Number(false);            // 0
+
+    // Boolean to String
+    val = String(true);             // "true"
+
+    // String to Boolean
+    val = Boolean("hello");         // true (non-empty string)
+    val = Boolean("");               // false (empty string)
+
+    // Null / Undefined
+    val = Number(null);             // 0
+    val = Number(undefined);        // NaN
+    val = Boolean(null);            // false
+    val = Boolean(undefined);       // false
+
+    // NaN checks
+    val = isNaN("hello");           // true
+    val = isNaN(123);               // false
+
+    // ✅ Coercion Examples
+    console.log('5' + 3);           // '53' (string + number => string)
+    console.log('5' - 3);           // 2   (string - number => number)
+    console.log(true + 1);          // 2   (true => 1)
+    console.log(false + 1);         // 1   (false => 0)
+    console.log(null + 1);          // 1   (null => 0)
+    console.log(undefined + 1);     // NaN (undefined => NaN)
+
+    // ✅ Extra Examples
+    console.log("10" * 2);           // 20 (string coerced to number)
+    console.log("10px" * 2);         // NaN (non-numeric string)
+    console.log(Boolean(0));        // false (0 is falsy)
+    console.log(Boolean("0"));      // true (non-empty string is truthy)
+    console.log(1 + true + "3");    // "23" (1 + 1 = 2, 2 + "3" = "23")
+    console.log([] == 0);           // true (quirky coercion: [] becomes '')
+    // console.log([] ===0);          // false (strict check: array !== number)
+
+    // ✅ More Weird JavaScript Coercions
+    console.log([1] + 1);            // "11" (array to string: "1" + "1")
+    console.log([] + []);           // "" (empty arrays to empty string)
+    console.log({} + []);           // "[object Object]" (object to string + array to string)
+    console.log([] + {});           // "[object Object]" (array + object)
+    console.log("5" - - "2");       // 7 (unary minus flips - to +)
+    console.log(false == '0');      // true (false coerces to 0)
+    console.log(null == undefined); // true (special case in == only)
+    console.log(null === undefined);// false (strict type mismatch)
+
+
+  </script>
+</body>
+
+</html>
