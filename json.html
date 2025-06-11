@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*     JSON = (javascript object notation) data - interchange format
+             used for exchanging data between a server and web application 
+             JSON files { key: value } or[value1, value2, value3]  */
+
+
+    //  JSON.stringfy() = converts a js object to a JSON string.
+
+    let person1 = {
+      name: "pavan",
+      age: 25,
+      hobbies: ["cricket", "badminton"]
+    }
+    console.log(person1);
+
+    const p = JSON.stringify(person1)
+    console.log(p);
+
+    const names = ["sponge", "patrick", "bob", "sandy"];
+    console.log(names);
+
+    const t = JSON.stringify(names)
+    console.log(t);
+
+
+
+    //  JSON.parse() = converts a JSON string to a JS object
+
+    const y = JSON.parse(p);
+    console.log(y);
+
+    const g = JSON.parse(t)
+    console.log(g);
+
+    // how to fetch a JSON file
+    fetch("person1.JSON")
+      .then(response => response.json())
+      .then(value => console.log(value));
+
+    // ===============================
+    // JSON MASTERY FILE - Full Guide
+    // ===============================
+
+    /*
+      🔥 What You'll Learn:
+      - Convert JS Objects <-> JSON
+      - Read/Write JSON files with fs
+      - Use JSON in Express.js API
+    */
+
+    // 🔗 Load core Node.js modules
+    const fs = require("fs");
+
+    // 🔗 Load Express for JSON APIs
+    const express = require("express");
+    const app = express();
+
+    // ===============================
+    // 1️⃣ JavaScript Object → JSON
+    // ===============================
+
+    const person = {
+      name: "Raj",
+      age: 21,
+      skills: ["JavaScript", "Node.js", "MongoDB"],
+      isActive: true,
+      // Methods are ignored when converting to JSON
+      greet: function () {
+        console.log("Hello!");
+      }
+    };
+
+    // Convert object to JSON string
+    const jsonString = JSON.stringify(person); // methods are removed
+    console.log("1️⃣ JS Object → JSON String:");
+    console.log(jsonString);
+
+    // ===============================
+    // 2️⃣ Pretty Print JSON
+    // ===============================
+
+    // Adds indentation (2 spaces) for readability
+    const prettyJSON = JSON.stringify(person, null, 2);
+    console.log("\n2️⃣ Pretty JSON:");
+    console.log(prettyJSON);
+
+    // ===============================
+    // 3️⃣ JSON String → JS Object
+    // ===============================
+
+    const rawJSON = '{"name":"Raj","age":21,"isActive":true}';
+    const parsedObject = JSON.parse(rawJSON); // turns JSON back into JS object
+
+    console.log("\n3️⃣ JSON String → JS Object:");
+    console.log(parsedObject);
+
+    // ===============================
+    // 4️⃣ Write JSON to File
+    // ===============================
+
+    fs.writeFileSync("person.json", prettyJSON); // saves to file
+    console.log("\n4️⃣ JSON saved to person.json ✅");
+
+    // ===============================
+    // 5️⃣ Read JSON from File
+    // ===============================
+
+    // Read the file back
+    const fileContent = fs.readFileSync("person.json", "utf-8");
+
+    // Convert string from file back into JS object
+    const fromFile = JSON.parse(fileContent);
+    console.log("\n5️⃣ JSON File Read & Parsed:");
+    console.log(fromFile);
+
+    // ===============================
+    // 6️⃣ Express Server: Accept JSON via POST
+    // ===============================
+
+    // Parse incoming JSON automatically
+    app.use(express.json());
+
+    // POST route to receive JSON data
+    app.post("/api/data", (req, res) => {
+      const incomingData = req.body;
+      console.log("\n6️⃣ JSON Received via POST:");
+      console.log(incomingData);
+
+      // Simulate saving or processing...
+      res.json({ message: "JSON received successfully ✅", data: incomingData });
+    });
+
+    // Start server
+    app.listen(3000, () => {
+      console.log("\n7️⃣ Express server running at http://localhost:3000");
+      console.log("Try POSTing some JSON to /api/data 🚀");
+    });
+
+
+  </script>
+</body>
+
+</html>
