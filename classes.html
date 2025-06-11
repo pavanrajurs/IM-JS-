@@ -9,27 +9,223 @@
 
 <body>
   <script>
-    // PROTOTYPES = EVERY JS OBJECT HAS A PROTOTYPE,ALL JS OBJECTS INHERIT THEIR PROPERTIES AND METHODS FROM THEIR PROTOTYPE
+    // ===============================================
+    // 💡 JAVASCRIPT CLASSES - BEGINNER CHEATSHEET
+    // ===============================================
 
-    function person(name, age) {
-      this.name = name;
-      this.age = age;
+    // 🧠 What is a Class?
+    // A blueprint to create multiple similar objects quickly.
+    // Like a cookie cutter 🍪 for making cookies (objects).
+
+    // -----------------------------------------------
+    // 1️⃣ BASIC CLASS WITH CONSTRUCTOR & METHOD
+    // -----------------------------------------------
+
+    class Animal {
+      constructor(name) {
+        // "this" refers to the object being created
+        this.name = name;
+      }
+
+      // method = function inside a class
+      speak() {
+        console.log(`${this.name} makes a noise.`);
+      }
     }
 
-    person.prototype.greet = function () {
-      console.log(`hello, My name is ${this.name}`);
+    const a1 = new Animal("Dog");
+    a1.speak(); // Dog makes a noise
 
+    // -----------------------------------------------
+    // 2️⃣ MULTIPLE METHODS IN A CLASS
+    // -----------------------------------------------
+
+    class Person {
+      constructor(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+
+      sayHello() {
+        console.log(`👋 Hello! My name is ${this.name}`);
+      }
+
+      showAge() {
+        console.log(`I am ${this.age} years old`);
+      }
     }
-    let jhon = new person("pavan", 22);
-    jhon.greet()
 
-// CLASSES
+    const p1 = new Person("Raj", 21);
+    p1.sayHello();
+    p1.showAge();
 
-x=5
+    // -----------------------------------------------
+    // 3️⃣ INHERITANCE - A CLASS EXTENDING ANOTHER
+    // -----------------------------------------------
 
-console.log(x--);
+    class Student extends Person {
+      constructor(name, age, grade) {
+        super(name, age); // Call the constructor of Person
+        this.grade = grade;
+      }
 
+      showGrade() {
+        console.log(`📚 I study in grade ${this.grade}`);
+      }
+    }
 
+    const s1 = new Student("Pavan", 18, 12);
+    s1.sayHello();  // Inherited
+    s1.showGrade(); // Own method
+
+    // -----------------------------------------------
+    // 4️⃣ GETTERS AND SETTERS - CONTROL ACCESS
+    // -----------------------------------------------
+
+    class Car {
+      constructor(brand) {
+        this._brand = brand; // _ means "private-ish" (not enforced)
+      }
+
+      // getter
+      get brand() {
+        return this._brand.toUpperCase(); // Always return in CAPS
+      }
+
+      // setter
+      set brand(newBrand) {
+        this._brand = newBrand.trim();
+      }
+    }
+
+    const car = new Car("   Maruti Suzuki   ");
+    console.log(car.brand); // MARUTI SUZUKI
+    car.brand = "   Honda ";
+    console.log(car.brand); // HONDA
+
+    // -----------------------------------------------
+    // 5️⃣ STATIC METHODS - NO NEED TO CREATE OBJECT
+    // -----------------------------------------------
+
+    class Calculator {
+      static add(x, y) {
+        return x + y;
+      }
+
+      static multiply(x, y) {
+        return x * y;
+      }
+    }
+
+    console.log(Calculator.add(5, 3));     // 8
+    console.log(Calculator.multiply(4, 2)); // 8
+
+    // No object needed: Calculator.add() ✅
+    // new Calculator().add() ❌
+
+    // -----------------------------------------------
+    // 6️⃣ PRIVATE FIELDS (#) - REAL PRIVACY
+    // -----------------------------------------------
+
+    class BankAccount {
+      #balance = 0; // Private field
+
+      deposit(amount) {
+        if (amount > 0) {
+          this.#balance += amount;
+        }
+      }
+
+      getBalance() {
+        return this.#balance;
+      }
+    }
+
+    const account = new BankAccount();
+    account.deposit(1000);
+    console.log(account.getBalance()); // 1000
+    // account.#balance ❌ Error: Private field
+
+    // -----------------------------------------------
+    // 7️⃣ CLASS EXPRESSION (RARE BUT VALID)
+    // -----------------------------------------------
+
+    const Dog = class {
+      constructor(name) {
+        this.name = name;
+      }
+
+      bark() {
+        console.log(`${this.name} says Woof! 🐶`);
+      }
+    };
+
+    const dog = new Dog("Bruno");
+    dog.bark(); // Bruno says Woof!
+
+    // -----------------------------------------------
+    // 8️⃣ SIMPLE POLYMORPHISM
+    // Same method name, different behavior
+    // -----------------------------------------------
+
+    class Cat {
+      speak() {
+        console.log("🐱 Meow!");
+      }
+    }
+
+    class Parrot {
+      speak() {
+        console.log("🦜 Hello! I can talk!");
+      }
+    }
+
+    function makeAnimalSpeak(animal) {
+      animal.speak();
+    }
+
+    makeAnimalSpeak(new Cat());
+    makeAnimalSpeak(new Parrot());
+
+    // -----------------------------------------------
+    // ✅ BONUS: ABSTRACT-LIKE CLASS (MANUAL ENFORCEMENT)
+    // -----------------------------------------------
+
+    class Shape {
+      constructor() {
+        if (this.constructor === Shape) {
+          throw new Error("❌ Shape is abstract. Use a subclass!");
+        }
+      }
+
+      draw() {
+        throw new Error("⚠️ draw() must be implemented by subclass");
+      }
+    }
+
+    class Circle extends Shape {
+      draw() {
+        console.log("🟢 Drawing a Circle");
+      }
+    }
+
+    const shape = new Circle();
+    shape.draw();
+    // const abstractShape = new Shape(); // ❌ Will throw error
+
+    // -----------------------------------------------
+    // 🧠 FINAL TIPS FOR BEGINNERS
+    // -----------------------------------------------
+
+    /*
+      ✅ Use `class` when:
+        - You want to organize code better
+        - You want to create many similar objects
+        - You want to use inheritance (extend another class)
+        - You want to group data + behavior together
+    
+      ❌ Don’t overuse classes. For small tasks, objects/functions are enough.
+    */
 
 
 
