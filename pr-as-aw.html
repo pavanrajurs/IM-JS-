@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let promise = new Promise(function (resolve, reject) {
+      let name = false;
+      if (name) {
+        resolve("im resolved");
+      } else {
+        reject("i'm rejected");
+      }
+    });
+
+    promise
+      .then(result => console.log("Resolved:" + result))
+      .catch(error => console.log("Rejected: " + error));
+
+    async function call() {
+      try {
+        let result = await promise;
+        console.log("Resolved", result);
+      } catch (error) {
+        console.log("Rejected", error);
+      }
+    }
+    call()
+
+  </script>
+</body>
+
+</html>
