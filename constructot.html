@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+
+    // A class in JavaScript is like a blueprint for creating objects
+
+
+    // Syntax Example:
+    // class Car {
+    //   // Constructor goes here
+    // }
+
+
+    // Constructor = The constructor is a special method inside a class that initializes (builds) the object.
+    // class Car {
+    //   constructor(brand) {
+    //     this.brand = brand; // "this" refers to the new object
+    //   }
+    // }
+
+    // EXAMPLE 
+    class Car {
+      constructor(brand, color) {  // Special constructor method
+        this.brand = brand;       // Setting properties
+        this.color = color;
+      }
+
+      // Method inside class
+      drive() {
+        console.log(`${this.brand} is driving!`);
+      }
+    }
+    const car1 = new Car('BMW', 'Black');
+    const car2 = new Car('Audi', 'Red');
+
+
+    const myCar = new Car("audi", "black")
+    myCar.drive();
+    car1.drive()
+
+    car2.drive();
+
+
+
+    // class 👉 Blueprint
+
+    // constructor 👉 Builds the object
+
+    // this 👉 Refers to the current object
+
+    // new 👉 Creates the object
+
+    // Method 👉 Actions the object can do
+
+  </script>
+</body>
+
+</html>
