@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>String </title>
+</head>
+
+<body>
+  <script>
+
+    // 🔠 String Methods in JavaScript — Clean & Professional Examples
+
+    // Split a string into an array using a separator
+    let str2 = "a-b-c";
+    let result2 = str2.split("-");
+    console.log(result2); // Output: ["a", "b", "c"]
+
+    // Join array elements into a single string with a space
+    const arr = ['hello', 'world'];
+    const result9 = arr.join(' ');
+    console.log(result9); // Output: "hello world"
+
+    // Check if substring exists in a string
+    let userName = 'BroCode';
+    console.log(userName.includes("B")); // true
+
+    // Find the first and last occurrence of a character
+    console.log(userName.indexOf("C"));   // Output: 3
+    console.log(userName.lastIndexOf('d')); // Output: 6
+
+    // Replace first occurrence of '9' with ' p'
+    let phoneNumber = "123-456-7990";
+    phoneNumber = phoneNumber.replace("9", " p");
+    console.log(phoneNumber); // Output: "123-456-7 p90"
+
+    // Replace all occurrences of '9' with ' p'
+    phoneNumber = phoneNumber.replaceAll("9", " p");
+    console.log(phoneNumber); // Output: "123-456-7 p p0"
+
+    // Extract parts of a string using slice (end not included)
+    console.log("abcdef".slice(1, 4)); // "bcd"
+    console.log("abcdef".slice(-3));   // "def"
+
+    // Using substring (similar to slice but no negative indexes)
+    console.log("abcdef".substring(1, 4)); // "bcd"
+
+    // Deprecated: substr(start, length)
+    console.log("abcdef".substr(1, 3)); // "bcd"
+
+    // Convert string to upper and lower case
+    console.log(userName.toUpperCase()); // "BROCODE"
+    console.log(userName.toLowerCase()); // "brocode"
+
+    // Get character at a specific index
+    console.log(userName.charAt(0)); // "B"
+
+    // Check if string starts/ends with a given substring
+    console.log(userName.startsWith("B")); // true
+    console.log(userName.endsWith("e"));   // true
+
+    // Get the length of the string
+    console.log(userName.length); // 7
+
+    // Trim whitespace from both ends (not index-based)
+    let spaced = "   Hello   ";
+    console.log(spaced.trim()); // "Hello"
+
+    // Repeat a string multiple times
+    console.log(userName.repeat(3)); // "BroCodeBroCodeBroCode"
+
+    // Pad string to a desired length (useful for formatting)
+    console.log(userName.padStart(20, " hello")); // fills left side
+    console.log(userName.padEnd(20, " hello"));   // fills right side
+
+    // Replace only the first "yo" in the string
+    let str1 = "yo yo";
+    let result1 = str1.replace("yo", "hi");
+    console.log(result1); // Output: "hi yo"
+
+
+
+  </script>
+
+</body>
+
+</html>

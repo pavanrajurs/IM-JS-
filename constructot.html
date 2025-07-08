@@ -56,22 +56,21 @@
 
     class CarDetails {
       constructor(make, model, year, color) {
-        this.make = make;
-        this.model = model;
-        this.year = year;
-        this.color = color;
+        this.make = make,
+          this.model = model,
+          this.year = year,
+          this.color = color,
+          this.drives = function run() {
+            console.log(`it is ${this.make} ${this.model} model from year ${this.year} the color is ${this.color}`);
+          }
 
       }
 
-      // method
-      run() {
-        console.log(`it is ${this.make} ${this.model} model from year ${this.year} the color is ${this.color}`);
-      }
     }
 
 
     const cars1 = new CarDetails("audi", "camero", 1999, 'black');
-    cars1.run()
+    cars1.drives()
 
     console.log(cars1.make);
     console.log(cars1.model);

@@ -34,11 +34,13 @@
     console.log("Power:", Math.pow(2, 3));                    // 8 (2^3)
     console.log("Min:", Math.min(2, 3, 44, 22, 3, 5, 5, 5));  // 2
     console.log("Max:", Math.max(2, 3, 44, 22, 3, 5, 5, 5));  // 44
-    console.log("Random (0-1):", Math.random());              // e.g., 0.734...
-    console.log("Random (1-20):", Math.floor(Math.random() * 20 + 1)); // 1 to 20
+    console.log("Random (0-1):", Math.random());              // e.g., 0.734...\
+    let max = 100
+    let min = 50
+    console.log("Random (100):", Math.floor(Math.random() * (max - min) + min));
+
 
     // ✅ Type Conversion
-    let val;
 
     // String to Number
     val = Number("123");            // 123 (number)

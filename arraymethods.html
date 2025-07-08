@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // ==============================================
+    // JAVASCRIPT ARRAY METHODS - INTERVIEW CHEATSHEET
+    // ==============================================
+
+    // 1. BASICS
+    // ---------
+
+    // length → Returns the number of elements
+    let arr = [1, 2, 3, 4, 5];
+    console.log(arr.length); // 3
+
+    // toString() → Converts array to comma-separated string
+    console.log([1, 2, 3].toString()); // "1,2,3"
+
+    // join(separator) → Joins array with custom separator
+    console.log(['a', 'b'].join('-')); // "a-b"
+
+    // at(index) → Returns element at index (supports negative)
+    console.log([10, 20, 30].at(-1)); // 30
+
+
+    // 2. ADD / REMOVE ELEMENTS
+    // -------------------------
+
+    // push() → Add to END
+    arr.push(4);
+
+    // pop() → Remove from END
+    arr.pop();
+
+    // unshift() → Add to START
+    arr.unshift(0);
+
+    // shift() → Remove from START
+    arr.shift();
+
+    // splice(start, deleteCount, ...items) → Add/Remove anywhere
+    arr.splice(1, 2, 'x', 'y');   //[1, x, y, 4, 5]
+
+    // slice(start, end) → Returns shallow copy (non-inclusive)
+    arr.slice(1, 3);
+
+    // 3. SEARCHING / CHECKING
+    // -------------------------
+
+    // includes(val) → Boolean check
+    [1, 2, 3].includes(2); // true
+
+    // indexOf(val) → First index of value
+    ['a', 'b', 'a'].indexOf('a'); // 0
+
+    // lastIndexOf(val) → Last index of value
+    ['a', 'b', 'a'].lastIndexOf('a'); // 2
+
+    // find(callback) → Returns first match
+    arr.find(x => x > 10);
+
+    // findIndex(callback) → Index of first match
+    arr.findIndex(x => x > 10);
+
+    // some(callback) → true if ANY match
+    arr.some(x => x > 10);
+
+    // every(callback) → true if ALL match
+    arr.every(x => x > 0);
+
+    // 4. TRANSFORMATION
+    // ------------------
+
+    // map(callback) → Transforms array
+    arr.map(x => x * 2);
+
+    // filter(callback) → Filters by condition
+    arr.filter(x => x > 5);
+
+    // reduce(callback, initialValue) → Reduces to single value
+    arr.reduce((acc, curr) => acc + curr, 0);
+
+    // flat(depth) → Flattens nested arrays
+    [1, [2, [3]]].flat(2); // [1, 2, 3]
+
+    // flatMap(callback) → map + flat(1)
+    arr.flatMap(x => [x * 2]);
+
+    // 5. SORTING / REVERSING
+    // -----------------------
+
+    // sort([compareFn]) → Sorts array (modifies it!)
+    arr.sort((a, b) => a - b); // ascending
+
+    // reverse() → Reverses in-place
+    arr.reverse();
+
+    // 6. FILLING / COPYING
+    // ---------------------
+
+    // fill(value, start?, end?) → Overwrites values
+    [1, 2, 3].fill(0, 1); // [1, 0, 0]
+
+    // copyWithin(target, start, end) → Copies part of array within itself
+    [1, 2, 3, 4].copyWithin(1, 0, 2); // [1, 1, 2, 4]
+
+    // 7. ITERATION
+    // -------------
+
+    // forEach(callback) → Loops through array
+    arr.forEach((val, i) => console.log(i, val));
+
+    // entries() → Returns iterator of [index, value]
+    for (let [i, v] of arr.entries()) {
+      console.log(i, v);
+    }
+
+    // keys() → Iterator of indices
+    for (let key of arr.keys()) {
+      console.log(key);
+    }
+
+    // values() → Iterator of values
+    for (let value of arr.values()) {
+      console.log(value);
+    }
+
+    // 8. ADVANCED
+    // ------------
+
+    // Array.from(iterable) → Converts string/set/map to array
+    Array.from('abc'); // ['a', 'b', 'c']
+
+    // Array.of(...vals) → Creates new array from args
+    Array.of(1, 2, 3); // [1, 2, 3]
+
+    // Array.isArray() → Checks if value is array
+    Array.isArray([]); // true
+
+    // concat(arr) → Combines arrays
+    [1, 2].concat([3, 4]); // [1, 2, 3, 4]
+
+    // 9. INTERVIEW TRICKS
+    // --------------------
+
+    // Remove duplicates
+    [...new Set(arr)]
+
+    // Clone array
+    // [...arr] // OR arr.slice()
+
+    // Compare arrays
+    JSON.stringify(arr1) === JSON.stringify(arr2)
+
+    // Empty an array
+    arr.length = 0;
+
+    // Convert NodeList to array
+    Array.from(document.querySelectorAll('div'));
+
+    // Convert string to char array
+    'hello'.split('');
+
+    // Chain map → filter → reduce
+    arr.map().filter().reduce();
+
+    // 10. PRACTICE EXERCISES
+    // ------------------------
+
+    // Count occurrences
+    // Reverse a string using array
+    // Filter falsy values: arr.filter(Boolean)
+    // Deep flatten nested array with recursion
+
+
+  </script>
+</body>
+
+</html>
