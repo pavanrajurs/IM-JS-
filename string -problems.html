@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 📦 Raj's Ultimate JS Problem Set 🔥
+    // Author: Raj (your name here)
+
+    //----------------------------------------------
+    // 1️⃣ Reverse a string
+    //----------------------------------------------
+    let str1 = "hello";
+    let reversedStr = str1.split("").reverse().join("");
+    console.log("Reverse:", reversedStr); // olleh
+
+    // Explanation: split turns string to array, reverse reverses it, join makes it string again
+
+    //----------------------------------------------
+    // 2️⃣ Count vowels in a string
+    //----------------------------------------------
+    let str2 = "developer";
+    let vowels = "aeiouAEIOU";
+    let count = 0;
+    for (let char of str2) {
+      if (vowels.includes(char)) count++;
+    }
+    console.log("Vowel Count:", count); // 4
+
+    //----------------------------------------------
+    // 3️⃣ Remove duplicate characters from string
+    //----------------------------------------------
+    let str3 = "aabbcc";
+    let uniqueChars = [...new Set(str3)].join("");
+    console.log("Unique Chars:", uniqueChars); // abc
+
+    //----------------------------------------------
+    // 4️⃣ Most frequent character
+    //----------------------------------------------
+    let str4 = "banana";
+    let freq = {};
+    for (let char of str4) {
+      freq[char] = (freq[char] || 0) + 1;
+    }
+    let maxChar = '';
+    let maxCount = 0;
+    for (let char in freq) {
+      if (freq[char] > maxCount) {
+        maxCount = freq[char];
+        maxChar = char;
+      }
+    }
+    console.log("Most Frequent:", maxChar); // a
+
+    //----------------------------------------------
+    // 5️⃣ Convert vowels to uppercase
+    //----------------------------------------------
+    let str5 = "developer";
+    let converted = str5.split("").map(c => vowels.includes(c) ? c.toUpperCase() : c.toLowerCase()).join("");
+    console.log("Vowels Upper:", converted); // dEvElOpEr
+
+    //----------------------------------------------
+    // 6️⃣ Find max and min in array
+    //----------------------------------------------
+    let arr1 = [3, 5, 1, 8, 2];
+    let max = arr1[0], min = arr1[0];
+    for (let num of arr1) {
+      if (num > max) max = num;
+      if (num < min) min = num;
+    }
+    console.log("Max:", max, "Min:", min); // 8 1
+
+    //----------------------------------------------
+    // 7️⃣ Sum of array elements (without reduce)
+    //----------------------------------------------
+    let sum = 0;
+    for (let num of arr1) sum += num;
+    console.log("Sum:", sum);
+
+    //----------------------------------------------
+    // 8️⃣ Reverse an array
+    //----------------------------------------------
+    let arr2 = [1, 2, 3, 4];
+    console.log("Reversed Array:", arr2.reverse());
+
+    //----------------------------------------------
+    // 9️⃣ Remove duplicates from array
+    //----------------------------------------------
+    let arr3 = [1, 2, 2, 3, 4, 4];
+    let uniqueArr = [...new Set(arr3)];
+    console.log("Unique Array:", uniqueArr);
+
+    //----------------------------------------------
+    // 🔟 Second largest number
+    //----------------------------------------------
+    let arr4 = [5, 9, 3, 7, 6];
+    arr4.sort((a, b) => b - a);
+    console.log("Second Largest:", arr4[1]);
+
+    //----------------------------------------------
+    // 1️⃣1️⃣ Check prime
+    //----------------------------------------------
+    function isPrime(n) {
+      if (n <= 1) return false;
+      for (let i = 2; i <= Math.sqrt(n); i++) {
+        if (n % i === 0) return false;
+      }
+      return true;
+    }
+    console.log("Is Prime 7:", isPrime(7));
+
+    //----------------------------------------------
+    // 1️⃣2️⃣ Print primes till N
+    //----------------------------------------------
+    function printPrimes(N) {
+      for (let i = 2; i <= N; i++) {
+        if (isPrime(i)) console.log(i);
+      }
+    }
+    // printPrimes(20);
+
+    //----------------------------------------------
+    // 1️⃣3️⃣ Factorial
+    //----------------------------------------------
+    function fact(n) {
+      let res = 1;
+      for (let i = 2; i <= n; i++) res *= i;
+      return res;
+    }
+    console.log("Factorial 5:", fact(5));
+
+    //----------------------------------------------
+    // 1️⃣4️⃣ Number palindrome
+    //----------------------------------------------
+    function isNumPalindrome(n) {
+      let str = n.toString();
+      return str === str.split('').reverse().join('');
+    }
+    console.log("121 Palindrome:", isNumPalindrome(121));
+
+    //----------------------------------------------
+    // 1️⃣5️⃣ String palindrome
+    //----------------------------------------------
+    function isStrPalindrome(s) {
+      return s === s.split('').reverse().join('');
+    }
+    console.log("madam Palindrome:", isStrPalindrome("madam"));
+
+    //----------------------------------------------
+    // 1️⃣6️⃣ Anagram check
+    //----------------------------------------------
+    function isAnagram(a, b) {
+      return a.split('').sort().join('') === b.split('').sort().join('');
+    }
+    console.log("listen/silent Anagram:", isAnagram("listen", "silent"));
+
+    //----------------------------------------------
+    // 1️⃣7️⃣ Capitalize first letter
+    //----------------------------------------------
+    let sentence = "hello world";
+    let capitalized = sentence.split(' ').map(w => w[0].toUpperCase() + w.slice(1)).join(' ');
+    console.log("Capitalized:", capitalized);
+
+    //----------------------------------------------
+    // 1️⃣8️⃣ Pattern - Star Triangle
+    //----------------------------------------------
+    for (let i = 1; i <= 4; i++) {
+      console.log("* ".repeat(i));
+    }
+
+    //----------------------------------------------
+    // 1️⃣9️⃣ Pattern - Number Triangle
+    //----------------------------------------------
+    for (let i = 1; i <= 4; i++) {
+      let line = '';
+      for (let j = 1; j <= i; j++) line += j + " ";
+      console.log(line);
+    }
+
+    //----------------------------------------------
+    // 2️⃣0️⃣ Pattern - Number Repeat
+    //----------------------------------------------
+    for (let i = 1; i <= 4; i++) {
+      console.log((i + " ").repeat(i));
+    }
+
+
+  </script>
+</body>
+
+</html>

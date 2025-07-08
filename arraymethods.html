@@ -132,22 +132,9 @@
       console.log(value);
     }
 
-    // 8. ADVANCED
-    // ------------
 
-    // Array.from(iterable) → Converts string/set/map to array
-    Array.from('abc'); // ['a', 'b', 'c']
 
-    // Array.of(...vals) → Creates new array from args
-    Array.of(1, 2, 3); // [1, 2, 3]
-
-    // Array.isArray() → Checks if value is array
-    Array.isArray([]); // true
-
-    // concat(arr) → Combines arrays
-    [1, 2].concat([3, 4]); // [1, 2, 3, 4]
-
-    // 9. INTERVIEW TRICKS
+    // 8. INTERVIEW TRICKS
     // --------------------
 
     // Remove duplicates
@@ -165,10 +152,17 @@
     // Convert string to char array
     'hello'.split('');
 
+
+    // Use .localeCompare() for smarter comparisons:
+    console.log("apple".localeCompare("banana")); // -1 (means "apple" comes first)
+    console.log("banana".localeCompare("apple")); // 1  (means "banana" comes later)
+    console.log("apple".localeCompare("apple"));  // 0  (they're equal)
+
+
     // Chain map → filter → reduce
     arr.map().filter().reduce();
 
-    // 10. PRACTICE EXERCISES
+    // 9. PRACTICE EXERCISES
     // ------------------------
 
     // Count occurrences
