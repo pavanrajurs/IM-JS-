@@ -9,28 +9,128 @@
 
 <body>
   <script>
-    let promise = new Promise(function (resolve, reject) {
-      let name = false;
-      if (name) {
-        resolve("im resolved");
+    /**************************************
+  PROMISES, ASYNC/AWAIT - FULL WALKTHROUGH
+  Author: Pawan (with ChatGPT support)
+**************************************/
+
+    // Example 1️⃣ - Basic Promise with resolve and reject
+    const basicPromise = new Promise((resolve, reject) => {
+      const isSuccessful = true;
+
+      if (isSuccessful) {
+        resolve("✅ Operation successful.");
       } else {
-        reject("i'm rejected");
+        reject("❌ Operation failed.");
       }
     });
 
-    promise
-      .then(result => console.log("Resolved:" + result))
-      .catch(error => console.log("Rejected: " + error));
+    // Consuming using then/catch
+    basicPromise
+      .then((result) => {
+        console.log("Then/Catch -> Resolved:", result);
+      })
+      .catch((error) => {
+        console.log("Then/Catch -> Rejected:", error);
+      });
 
-    async function call() {
+
+    // Example 2️⃣ - Async/Await version of same promise
+    async function consumeBasicPromise() {
       try {
-        let result = await promise;
-        console.log("Resolved", result);
+        const result = await basicPromise;
+        console.log("Async/Await -> Resolved:", result);
       } catch (error) {
-        console.log("Rejected", error);
+        console.log("Async/Await -> Rejected:", error);
       }
     }
-    call()
+    consumeBasicPromise();
+
+
+    // Example 3️⃣ - Simulating real-world API call
+    function mockApiCall(success = true) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (success) {
+            resolve("📦 API responded with data.");
+          } else {
+            reject("🚫 API failed to respond.");
+          }
+        }, 1000);
+      });
+    }
+
+    // Using async/await with simulated API
+    async function fetchApiData() {
+      try {
+        const response = await mockApiCall(true); // try false to test rejection
+        console.log("API Success:", response);
+      } catch (error) {
+        console.log("API Error:", error);
+      }
+    }
+    fetchApiData();
+
+
+    // Example 4️⃣ - Another mock to simulate server status
+    function checkServerStatus() {
+      return new Promise((resolve, reject) => {
+        const isOnline = Math.random() > 0.5;
+        setTimeout(() => {
+          if (isOnline) {
+            resolve("🟢 Server is online.");
+          } else {
+            reject("🔴 Server is down.");
+          }
+        }, 500);
+      });
+    }
+
+    async function monitorServer() {
+      try {
+        const status = await checkServerStatus();
+        console.log("Server Check:", status);
+      } catch (error) {
+        console.error("Server Error:", error);
+      }
+    }
+    monitorServer();
+
+
+    // Example 5️⃣ - Real-world analogy: Ordering food
+    function orderFood(foodAvailable) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (foodAvailable) {
+            resolve("🍕 Your order has been delivered.");
+          } else {
+            reject("😢 Sorry, food is unavailable.");
+          }
+        }, 800);
+      });
+    }
+
+    async function handleFoodOrder() {
+      try {
+        const deliveryStatus = await orderFood(true); // set to false for rejection
+        console.log("Food Order:", deliveryStatus);
+      } catch (error) {
+        console.log("Food Order Failed:", error);
+      }
+    }
+    handleFoodOrder();
+
+
+    /**************************************
+      💡 Summary:
+      - Promises are used for async tasks
+      - .then/.catch is old-school, still works
+      - async/await is modern and cleaner
+      - Always wrap await in try/catch
+      - You can simulate real APIs using setTimeout
+      - Everything async returns a Promise!
+    **************************************/
+
 
   </script>
 </body>

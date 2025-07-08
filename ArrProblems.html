@@ -12,51 +12,11 @@
   <script>
     // 1. map(): The Transformer:Takes an array, transforms each element, and returns a new array with the same length.
 
-    // array.map((element, index, array) => {
-    //   // return the transformed element
-    // });
-
-
-    let nums = [1, 2, 3, 4, 5];
-    function double(x) {
-      return x * 2;
-    }
-
-    function triple(x) {
-      return x * 3;
-    }
-
-    let output = nums.map(double)
-    console.log(output);
-    console.log(nums.map(triple));
-
-    const out = nums.map((x) => x.toString(2)); console.log(out);
-
     // 2. filter() : Goes through the array and filters out elements that don’t pass a test.
-
-    // array.filter((element, index, array) => {
-    // return condition; // only truthy values make the cut
-    // });
 
     const nums1 = [1, 2, 3, 4, 5, 6];
 
-    //filter odd values
-    function isOdd(x) {
-      return x % 2;
-    }
-    console.log(nums1.filter(isOdd));
-
-    //filter even values
-    // function isEven(x){
-    // return x % 2 == 0;
-    // }
-    console.log(nums1.filter((x) => x % 2 == 0));
-
-    // no less than 2
-    const ouput1 = nums1.filter(num => num > 2)
-    console.log(ouput1);
-
-    // to count even numbers
+    // to count even numbers using loop
     arr4 = [2, 3, 4, 5, 6, 7, 8, 9, 12, 33]
     function even() {
       let count = [];
@@ -76,10 +36,6 @@
 
 
     // 3. reduce():Goes through the array and reduces it to a single value using a callback.
-
-    // array.reduce((accumulator, currentValue, index, array) => {
-    // return updatedAccumulator;
-    // }, initialValue);
 
     //to find sum of array
     const arr = [5, 2, 3, 4, 1, 5, 6];

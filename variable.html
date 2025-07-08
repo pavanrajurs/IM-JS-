@@ -10,48 +10,172 @@
 <body>
   <script>
 
-    // variables  is like a container to store value
-
-    ex:
-    let mood = "happy"; // Now mood holds the string "happy".
-
-    /*
-    VAR => GLOBAL SCOPED
-       var – Old school (ES5)
-       Function - scoped
-       Gets hoisted(more on this later)
-       Can be re - declared */
-
-    var name = "Raj";
-    var name = "Boss"; // No error!
+    // =======================================
+    // JavaScript Variables – Interview Guide
+    // =======================================
 
 
-    /* 
-    let – Modern default
-      Block-scoped (like inside {})
-      Not hoisted the same way
-      Can be reassigned, but not re-declared in the same scope
-     */
+    // 1. VARIABLE DECLARATIONS
+    // ------------------------
 
-    let age = 20;
-    age = 21; // ✅
-    // let age = 22; // ❌ SyntaxError
-
-
-    /*
-    🔒 const – Write-once
-      Also block-scoped
-      Must be initialized
-      Can’t be reassigned */
-
-    const pi = 3.14;
-    // pi = 3.14159; // ❌ TypeError
-
-
-    function testVar() {
-      var inside = "I'm stuck in here!";
+    // var: function-scoped, hoisted with 'undefined', re-declarable and re-assignable
+    function demoVar() {
+      console.log(a); // undefined
+      var a = 5;
+      console.log(a); // 5
     }
-    console.log(inside); // ❌ ReferenceError
+    demoVar();
+
+    // let: block-scoped, hoisted but in TDZ, re-assignable but not re-declarable
+    let x = 10;
+    x = 20; // OK
+
+    // const: block-scoped, must be initialized, neither re-declarable nor re-assignable
+    const PI = 3.14;
+    // PI = 3.1415; // ❌ Error
+
+
+    // 2. DATA TYPES
+    // -------------
+
+    // Primitive Types
+    let num = 42;
+    let str = "Hello";
+    let bool = true;
+    let empty = null;
+    let undef; // undefined
+    let sym = Symbol("id");
+    let big = 12345678901234567890n;
+
+    // Reference Types
+    const arr = [1, 2, 3];
+    const obj = { name: "Pawan" };
+    const fn = () => "Hello";
+
+
+    // 3. SCOPE
+    // --------
+
+    // Global Scope
+    let globalVar = "I'm global";
+
+    // Function Scope (var)
+    function testScope() {
+      var localVar = "I'm local";
+      console.log(localVar);
+    }
+
+    // Block Scope (let, const)
+    {
+      let blockVar = "Block scoped";
+      const constantVar = 42;
+    }
+
+
+    // 4. HOISTING
+    // -----------
+
+    console.log(a); // undefined
+    var a = 5;
+
+    console.log(b); // ReferenceError
+    let b = 10;
+
+
+    // 5. RE-DECLARATION & RE-ASSIGNMENT
+    // ---------------------------------
+
+    // | Keyword | Re-declaration | Re-assignment |
+    // |---------|----------------|---------------|
+    // | var     | ✅             | ✅            |
+    // | let     | ❌             | ✅            |
+    // | const   | ❌             | ❌            |
+
+
+    // 6. TEMPORAL DEAD ZONE (TDZ)
+    // ---------------------------
+
+    console.log(c); // ReferenceError
+    let c = 3;
+
+
+    // 7. MUTABILITY
+    // -------------
+
+    const person = { name: "Pawan" };
+    person.name = "Raj"; // ✅ Allowed
+
+    // person = { name: "Someone else" }; // ❌ Error
+
+
+    // 8. typeof OPERATOR
+    // ------------------
+
+    console.log(typeof "hello");      // "string"
+    console.log(typeof 42);           // "number"
+    console.log(typeof true);         // "boolean"
+    console.log(typeof undefined);    // "undefined"
+    console.log(typeof null);         // "object" ❗ (legacy bug)
+    console.log(typeof {});           // "object"
+    console.log(typeof []);           // "object"
+    console.log(typeof NaN);          // "number" ❗
+    console.log(typeof (() => { }));   // "function"
+
+
+    // 9. DESTRUCTURING
+    // ----------------
+
+    // Array Destructuring
+    const [a1, b1] = [1, 2];
+
+    // Object Destructuring
+    const { name, age } = { name: "Pawan", age: 21 };
+
+
+    // 10. SHADOWING
+    // -------------
+
+    let outer = "outer";
+    {
+      let outer = "inner";
+      console.log(outer); // "inner"
+    }
+    console.log(outer); // "outer"
+
+
+    // 11. CONST with ARRAYS / OBJECTS
+    // -------------------------------
+
+    const arr1 = [1, 2];
+    arr1.push(3); // ✅ Allowed
+
+    const obj1 = { a: 1 };
+    obj1.a = 100; // ✅ Allowed
+
+
+    // 12. BEST PRACTICES
+    // ------------------
+
+    // - Use `const` by default
+    // - Use `let` when reassignment is necessary
+    // - Avoid `var`
+    // - Avoid global variables
+    // - Keep variables scoped as tightly as possible
+
+
+    // 13. INTERVIEW PITFALLS
+    // -----------------------
+
+    console.log(typeof null); // "object"
+    console.log(typeof NaN);  // "number"
+
+    let z = 1;
+    {
+      let z = 2;
+      console.log(z); // 2
+    }
+    console.log(z); // 1
+
 
   </script>
 

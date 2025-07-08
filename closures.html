@@ -9,7 +9,141 @@
 
 <body>
   <script>
-    // Closures = > it means a function binds together within its lexical environment
+    // ----------------------------------------
+    // 🧠 Lexical Scope - The Setup
+    // ----------------------------------------
+
+    function outer() {
+      const outerVar = "I'm outside!";
+
+      function inner() {
+        console.log(outerVar); // ✅ Can access outerVar
+      }
+
+      inner(); // call inner
+    }
+
+    outer();
+    // Output: I'm outside!
+
+
+    // ----------------------------------------
+    // 💡 Lexical Scope = "Where was the function defined"
+    // ----------------------------------------
+
+    const globalVar = "Global";
+
+    function outerFunc() {
+      const outerVar = "Outer";
+
+      function innerFunc() {
+        console.log(globalVar); // ✅ Lexical scope says: Check outer → then global
+        console.log(outerVar);  // ✅ Found in outerFunc
+      }
+
+      return innerFunc;
+    }
+
+    const callInner = outerFunc();
+    callInner(); // Output: Global, Outer
+
+
+
+    // ----------------------------------------
+    // 🔒 Closures - Keeping Data Alive
+    // ----------------------------------------
+
+    function counter() {
+      let count = 0;
+
+      return function () {
+        count++;
+        console.log("Count:", count);
+      };
+    }
+
+    const inc = counter();
+    inc(); // Count: 1
+    inc(); // Count: 2
+    inc(); // Count: 3
+
+    // ✅ Even though 'counter' is done executing,
+    // the inner function still remembers 'count' 👀
+
+
+    // ----------------------------------------
+    // ⚠️ Common Closure Trap (Inside Loops)
+    // ----------------------------------------
+
+    console.log("\nLoop + Closure 🔥");
+
+    for (var i = 0; i < 3; i++) {
+      setTimeout(() => {
+        console.log("var i:", i); // ❌ Always prints 3, 3, 3
+      }, 100);
+    }
+
+    // ✅ Fix it with let (block scoped)
+    for (let j = 0; j < 3; j++) {
+      setTimeout(() => {
+        console.log("let j:", j); // ✅ Prints 0, 1, 2
+      }, 100);
+    }
+
+
+    // ----------------------------------------
+    // ✅ Closure Use Case: Private Variables
+    // ----------------------------------------
+
+    function secretHolder(secret) {
+      return {
+        getSecret: function () {
+          return secret;
+        },
+        setSecret: function (newSecret) {
+          secret = newSecret;
+        }
+      };
+    }
+
+    const obj = secretHolder("🧠 original");
+    console.log(obj.getSecret()); // 🧠 original
+    obj.setSecret("💥 updated");
+    console.log(obj.getSecret()); // 💥 updated
+
+
+    // ----------------------------------------
+    // 🧨 Closure + Garbage Collection (Tricky Corner Case)
+    // ----------------------------------------
+
+    function leakyFunction() {
+      const hugeData = new Array(1000000).fill("📦");
+
+      return function () {
+        console.log("Still holding hugeData...");
+      };
+    }
+
+    const leaker = leakyFunction();
+    // leaker = null; // 👈 Uncomment to release memory
+
+    // Even if leakyFunction is done, hugeData stays in memory
+    // because closure keeps it alive ⚠️
+
+
+    // ----------------------------------------
+    // 🧠 Summary for Interview Drop
+    // ----------------------------------------
+
+    // Lexical Scope = Where the function is defined (not called)
+    // Closure = Function + Its Lexical Scope stays alive
+    // Closures let you:
+    // - Preserve state
+    // - Create private variables
+    // - Avoid polluting global scope
+    // - Screw up memory if you’re careless 😅
+
+
 
 
 
